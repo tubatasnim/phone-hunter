@@ -24,6 +24,9 @@ const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     //clear previous result
     searchResult.innerHTML = '';
+    if (searchResult.length >= 20) {
+        alert
+    }
     // error handle
     if (data.length == 0) {
         alert('No result found');
@@ -40,9 +43,8 @@ const displaySearchResult = data => {
             <img src="${data.image}" class="card-img-top" alt="...">
             <div class="card-body">
               <h4 class="card-title">${data.phone_name}</h4>
-              <h6 class="card-title" "displayPhoneIdDetail(${data.releaseDate}) "></h6>
               <h5 class="card-title">${data.brand}</h5>
-              <a onclick="loadPhoneDetails ('${data.slug}')" class="btn btn-primary">Detail</a>
+              <a onclick="loadPhoneDetails ('${data.slug}')" class="btn btn-primary">Details</a>
             </div>
           </div>
            `;
@@ -62,21 +64,46 @@ const displayPhoneIdDetail = data => {
     detailsDisplay.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card');
+    // if (releaseDate == 0) {
+    //     <h5>No release date found</h5>
+    // }
     div.innerHTML = `
     <img src="${data.image}" class="card-img-top" alt="...">
     <div class="card-body">
+    <h2 class="card-title">${data.name}</h2>
+    <h6 class="card-title">${data.releaseDate}</h6>
+    <h4 class="card-title">${data.slug}</h4>
+    <h4>MainFeatures</h4>
     <ul>
-    <li class="card-title">${data.slug}</li>
     <li class="card-title">${data.mainFeatures.storage}</li>
     <li class="card-title">${data.mainFeatures.displaySize}</li>
     <li class="card-title">${data.mainFeatures.chipSet}</li>
     <li class="card-title">${data.mainFeatures.memory}</li>
-    <li class="card-title">${data.mainFeatures.sensors[0]}</li>
-    <li class="card-title">${data.others.WLAN}</li>
     </ul>
+    <h4>Sensors</h4>
+    <ul>
+    <li class="card-title">${data.mainFeatures.sensors[0]}</li>
+    <li class="card-title">${data.mainFeatures.sensors[1]}</li>
+    <li class="card-title">${data.mainFeatures.sensors[2]}</li>
+    <li class="card-title">${data.mainFeatures.sensors[3]}</li>
+    <li class="card-title">${data.mainFeatures.sensors[4]}</li>
+    <li class="card-title">${data.mainFeatures.sensors[5]}</li>
+    </ul>
+    <h4> Others</h4>
+    <ul>
+    <li class="card-title">${data.others.WLAN}</li>
+    <li class="card-title">${data.others.Bluetooth}</li>
+    <li class="card-title">${data.others.GPS}</li>
+    <li class="card-title">${data.others.NFC}</li>
+    <li class="card-title">${data.others.Radio}</li>
+    <li class="card-title">${data.others.USB}</li>
+    </ul>
+   
         <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
     `;
+
+
     detailsDisplay.appendChild(div);
 }
 
