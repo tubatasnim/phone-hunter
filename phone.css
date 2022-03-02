@@ -3,3 +3,6 @@
 body{
     font-family: 'Poppins', sans-serif;
 }
+#search-result{
+    margin-left: 80px;
+}
