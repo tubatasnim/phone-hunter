@@ -15,25 +15,18 @@ const searchPhone = () => {
             .then(res => res.json())
             .then(data => displaySearchResult(data.data))
     }
-
-
-
 }
 // searchPhone area handeling
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     const first20Item = data.slice(0, 20);
-
     //clear previous result
     searchResult.innerHTML = '';
-
     // error handle
     if (data.length == 0) {
         alert('No result found');
     }
-
     for (const phone of first20Item) {
-        console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = ` 
@@ -49,24 +42,20 @@ const displaySearchResult = data => {
         searchResult.appendChild(div);
     }
 
-
-
-
 };
+// phone details area handling
 const loadPhoneDetails = phoneId => {
-
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneIdDetail(data.data))
-}
+};
+// display phone details area
 const displayPhoneIdDetail = data => {
-
     const detailsDisplay = document.getElementById('phone-details');
     detailsDisplay.innerHTML = '';
     const div = document.createElement('div');
     div.classList.add('card');
-
     div.innerHTML = `
     <img width='250px' height='450px' src="${data.image}" class="card-img-top" alt="...">
     <div class="card-body">
@@ -98,7 +87,7 @@ const displayPhoneIdDetail = data => {
         <li>${data.others.Radio}</li>
         <li>${data.others.USB}</li>
     </ul>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="https://www.youtube.com/watch?v=dguoYsfcH6M&ab_channel=MJTech" class="btn btn-primary">Go somewhere</a>
     </div>
     `;
     detailsDisplay.appendChild(div);
